@@ -1,0 +1,31 @@
+{# Load the tag library #}
+{% load bootstrap5 %}
+<html>
+<head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="container-lg mt-5" style="max-width: 970px;">
+        <div class="row m-5">
+            <div class="col">
+                <img src="https://www.ikw.uni-osnabrueck.de/fileadmin/templates_global/public/img/header_logo.gif">
+            </div>
+        </div>
+        <div class="row m-5">
+            <div class="col">
+                {% bootstrap_messages %}
+                {% block content %}
+                {% endblock %}
+                <p>&nbsp;</p>
+                <hr>
+                <p><a href="https://www.ikw.uni-osnabrueck.de/en/service/imprint.html" class="link-dark">Imprint</a>
+                    &nbsp; &middot; &nbsp; This page is maintained by the Fachschaft Cognitive Science
+                    &nbsp; &middot; &nbsp; Contact: <a href="mailto:fachschaft@fachschaft.test" class="link-dark">fachschaft@fachschaft.test</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{%  extends 'schnupper/base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    <h1 class="display-3">Anmeldungen zum Schnupperstudium</h1>
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+<table class="table striped">
+    <tr><th>#</th><th>Valid</th><th>Date</th><th>Lastname</th><th>Firstname</th><th>E-Mail</th><th>Program</th><th>Accomodation</th><th>Food</th><th>Notes</th></th>
+{% for anmeldung in object_list %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ anmeldung.validated|yesno:"Yes,No" }}</td>
+        <td>{{ anmeldung.mkdate|date:"d.M.Y, h:m:s" }}</td>
+        <td>{{ anmeldung.lastname }}</td>
+        <td>{{ anmeldung.firstname }}</td>
+        <td><a href="mailto:{{ anmeldung.email }}">{{ anmeldung.email }}</a></td>
+        <td>{{ anmeldung.get_program_display }}</td>
+        <td>{{ anmeldung.accomodation }}</td>
+        <td>{{ anmeldung.get_food_display }}</td>
+        <td>{{ anmeldung.notes }}</td>
+    </tr>
+
+{% empty %}
+    <tr><td colspan="8">No registrations yet.</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

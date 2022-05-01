@@ -1,0 +1,20 @@
+{%  extends 'schnupper/base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    {{ status }}
+    {% if status == 'error' %}
+        <h1 class="display-3">Error!</h1>
+        <p>&nbsp;</p>
+        <p>Fehler: Der verwendete Bestätigungslink ist ungültig. Bitte prüfen Sie, ob der Link vollständig übertragen wurde!</p>
+    {% elif status == 'already validated' %}
+        <h1 class="display-3">Schon bestätigt</h1>
+        <p>&nbsp;</p>
+        <p>Hallo {{ anmeldung.firstname }} {{ anmeldung.lastname }}, Deine E-Mail-Adresse wurde bereits bestätigt. Du musst nichts weiter tun, wir melden uns mit weiteren Informationen.</p>
+    {% elif status == 'success' %}
+        <h1 class="display-3">Anmeldung erfolgreich bestätigt</h1>
+        <p>&nbsp;</p>
+        <p>Hallo {{ anmeldung.firstname }} {{ anmeldung.lastname }}, Deine Anmeldung und Deine E-Mail Adresse wurden erfolgreich bestätigt. Deine Anmeldung ist nun vollständig.</p>
+    {% else %}
+        <p>Unbekannter Fehler. Bitte antworte auf die Mail mit dem Bestätigungslink und teile uns mit, dass bei der Bestätigung ein Fehler aufgetreten ist.</p>
+    {% endif %}
+{% endblock %}
