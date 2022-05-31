@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Verein(models.Model):
@@ -29,7 +30,7 @@ class Verein(models.Model):
                             verbose_name="Membership type (non-binding, has to be declared after final decision on fees)")
     # iban = models.CharField(max_length=32, verbose_name='IBAN (only if you become a member now')  # will be checked via special form field
     extra_fee = models.IntegerField(verbose_name='Optional: Higher membership fee per year', blank=True, null=True)
-    suggested_name = models.CharField(max_length=128, verbose_name='Suggested name for the association (examples suggested so far: "Coxi Club" or "CogSci Network"')
+    suggested_name = models.CharField(max_length=128, verbose_name='Suggested name for the association (examples suggested so far: "Coxi Club" or "CogSci Network"', blank=True)
     privacy = models.BooleanField(verbose_name="I agree to the data privacy declaration as given below")
     notes = models.TextField(blank=True)
     validation_id = models.UUIDField(editable=False)
@@ -50,10 +51,16 @@ class VereinForm(ModelForm):
         model = Verein
         fields = '__all__'
 
+    def clean_privacy(self):
+        privacy = self.cleaned_data['privacy']
+        if not privacy:
+            raise ValidationError("Please agree to the data privacy declaration.")
+        return privacy
+
     def send_confirmation(self, anmeldung):
-        subject = 'Please confirm your registration for F2IKW / The CogSci Network'
+        subject = 'Please confirm your commitment for F2IKW / The CogSci Network'
         html_message = render_to_string('cogscinet/confirmation_mail.html', locals())
         plain_message = strip_tags(html_message)
-        sender = 'tobias.thelen@uni-osnabrueck.de'
+        sender = '"F2IKW e.V. (Tobias Thelen)" <tobias.thelen@uni-osnabrueck.de>'
         to = anmeldung.email
         send_mail(subject, plain_message, sender, [to], html_message=html_message, fail_silently=False)
