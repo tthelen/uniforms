@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('/', TemplateView.as_view(template_name='empty.html')),
     path('admin/', admin.site.urls),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='admin/login.html')),  # login form
 
     # forms
-    path('schnupper/', include('schnupper.urls')),  # registration schnupperstudium
+#    path('schnupper/', include('schnupper.urls')),  # registration schnupperstudium
     path('cogscinet/', include('cogscinet.urls')),  # registration f2ikw / cogscinet
 ]
