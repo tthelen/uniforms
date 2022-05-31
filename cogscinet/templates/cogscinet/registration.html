@@ -1,8 +1,26 @@
-{%  extends 'cogscinet/base.html' %}
+ {%  extends 'cogscinet/base.html' %}
 {% load bootstrap5 %}
 {% block content %}
     <h1 class="display-3">CogSci Network Membership</h1>
-    <p>Please give...</p>
+    <h2>Keep the CogSci spirit alive!</h2>
+    <p>In the summer of 2022, the old "Association of Friends of Sponsors of the Institute of Cognitive Science" (F²KW)
+    is either to be closed down or to be transformed into an alumni network that is more closely tailored to the
+    interests of current and former students.</p>
+    <p>These are some goals and means to reach them for the newly established CogSci network:</p>
+    <ul>
+        <li>Create and support a reliable, long-term platform for exchange of ideas and networking among students, staff and alumni.</li>
+        <li>Support events connecting students and alumni, such as the alumni conference.</li>
+        <li>Support students in gaining professional and scientific experiences, e.g. by visting conferences or publishing a Student Journal.</li>
+        <li>Promote student initiatives to open up innovative areas of cognitive science education and training</li>
+        <li>Establish a permanent office for the association to guarantee a constant flow of activities and a permanent contact partner ("450€ job")</li>
+    </ul>
+    <p>For this transformation to be possible, we need a "critical mass" of interested people who are willing to
+    become (or stay) members and to suport the work of the association with their membership fee.</p>
+    <p><b>Our aim is to reach an annual revenue of at least 10,000 € from membership fees and donations to be able to pursuit these goals.</b>
+    <p><b>So far we have received commitments totaling {{ total }}.</b></p>
+
+    <h2>Commit yourself now!</h2>
+    <p>After submitting, you will receive an e-mail asking you to confirm your submission.</p>
     {# Display django.contrib.messages as Bootstrap alerts #}
 
     {# Display a form #}
@@ -15,5 +33,15 @@
         </button>
       {% endbuttons %}
     </form>
+
+    <h2>Data Privacy</h2>
+    <p>English summary:</p>
+    <p>All data collected here is received and processed by board members of the F²IKW
+    (Verein der Freunde und Förderer des Instituts für Kognitionswissenschaft e.V.) and their authorized agents only.
+    It is only used for the purposes and aims of the association and will not be disclosed to third parties except
+    on the basis of a valid data processing agreement (DPA) that maintains your rights.
+    You have the right of access your personal data and the right of correction or erasure of data as long
+    as this does not conflict with the purpose of storing the data (association membership).</p>
+    <p><a href="https://www.ikw.uni-osnabrueck.de/fileadmin/user_upload/download/f2ikw/Datenschutzerklaerung.pdf">Legally binding full version (German)</a></p>
 
 {% endblock %}

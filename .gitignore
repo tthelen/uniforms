@@ -187,3 +187,6 @@ fabric.properties
 # never check in real credentails file
 uniforms/credentials.py
 
+# we don't want to have database in the repo
+db.sqlite3
+

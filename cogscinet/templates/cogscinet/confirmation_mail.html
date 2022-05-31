@@ -1,21 +1,36 @@
 <p>Dear {{anmeldung.firstname}} {{anmeldung.lastname}},</p>
-<p>thank you very much for your registration for the new CogSci Network initiative.</p>
+<p>thank you very much for your commitment to the new CogSci Network initiative.</p>
 
 <p>This is the information we recevied from you:</p>
 
 <ul>
     <li>Name: {{anmeldung.firstname}} {{anmeldung.lastname}}</li>
     <li>E-Mail-Adress: {{ anmeldung.email }}</li>
-    <li>Futher notes: {{ anmeldung.notes }}</li>
+    <li>Membership: {{ anmeldung.membership_display }}</li>
+    <li>Membership type you are willing to pay for (per year): {{ anmeldung.plan_display }}</li>
+    <li>Optional: Optional: Higher membership fee per year: {{ anmeldung.extra_fee }}</li>
+    <li>Your suggested name for the association:  {{ anmeldung.sugested_name }}</li>
+    <li>Further notes: {{ anmeldung.notes }}</li>
 </ul>
 
 <p><b>Please confirm your registration and your email-address by clicking on this link:</b>
 <a href="{{ anmeldung.validation_url }}">{{ anmeldung.validation_url }}</a>
 </p>
 
-<p>In case of questions, please contact ...</p>
+<p>If you made a mistake, just ignore this e-mail and fill in the form again.</p>
+
+<p>In case of questions, please contact the F2IKW board (Kai-Uwe Kühnberger, Tobias Thelen and Pascal Nieters) at f2ikw@uni-osnabrueck.de or reply to this e-mail.</p>
+
+<p>You agreed to our <a href="https://www.ikw.uni-osnabrueck.de/fileadmin/user_upload/download/f2ikw/Datenschutzerklaerung.pdf">data privacy conditions.</a></p>
 
 <pre>--
 ------------------------------------------------
-our signature....
+Verein der Freunde und Förderer des Instituts für Kognitionswissenschaft e.V.
+c/o Institut für Kognitionswissenschaft
+Wachsbleiche 27
+49090 Osnabrück
+E-Mail: f2ikw@uni-osnabrueck.de
+Tel.: +49 541 969-6502
+https://www.ikw.uni-osnabrueck.de/das_institut/f2ikw.html
+Allein vertretungsberechtigte Vorstandsmitglieder: Prof. Dr. Kai-Uwe Kühnberger, Dr. Tobias Thelen, Pascal Nieters
 </pre>
