@@ -18,15 +18,17 @@ class Verein(models.Model):
     PLAN_GOLD = 'G'
     PLAN_INDIVIDUAL = 'L'
 
+    company = models.CharField(max_length=128, blank=True, verbose_name="Company name (if registering as a company member)")
     firstname = models.CharField(max_length=128)
     lastname = models.CharField(max_length=128)
     email = models.EmailField()
-    membership = models.CharField(max_length=1, choices=[(MEMBER_ALREADY, 'I am a member of F2IKW and want to stay a member.' ), (MEMBER_NOW, 'I want to become a member now and I\'ll be able to join the hybrid meeting on July, 13th, 18:00'), (MEMBER_LATER, 'I plan to become a member later (selected plan is not binding, but we will remind you)')])
+    membership = models.CharField(max_length=1, choices=[(MEMBER_ALREADY, 'I am a member of F2IKW and want to stay a member.' ), (MEMBER_NOW, 'I want to become a member now (binding) and I\'ll be able to join the hybrid meeting on July, 13th, 18:00'), (MEMBER_LATER, 'I plan to become a member later (not binding, but we will remind you)')])
     plan = models.CharField(max_length=1, choices=[(PLAN_REDUCED, 'Reduced (21€)'), (PLAN_NORMAL, 'Regular (42€)'),
                                                    (PLAN_SENIOR, 'Senior (84€)'), (PLAN_SILVER, 'Company, silver member (420€)'),
-                                                   (PLAN_GOLD, 'Company, gold member (42 * 42€ = 1.764€)'), (PLAN_INDIVIDUAL, 'Individual amount > 84€ for individuals, > 1764€ for companys, given below)')])
+                                                   (PLAN_GOLD, 'Company, gold member (42 * 42€ = 1.764€)'), (PLAN_INDIVIDUAL, 'Individual amount > 84€ for individuals, > 1764€ for companys, given below)')],
+                            verbose_name="Membership type (non-binding, has to be declared after final decision on fees)")
     # iban = models.CharField(max_length=32, verbose_name='IBAN (only if you become a member now')  # will be checked via special form field
-    extra_fee = models.IntegerField(verbose_name='Optional: Higher membership fee per year')
+    extra_fee = models.IntegerField(verbose_name='Optional: Higher membership fee per year', blank=True, null=True)
     suggested_name = models.CharField(max_length=128, verbose_name='Suggested name for the association (examples suggested so far: "Coxi Club" or "CogSci Network"')
     privacy = models.BooleanField(verbose_name="I agree to the data privacy declaration as given below")
     notes = models.TextField(blank=True)
@@ -34,6 +36,14 @@ class Verein(models.Model):
     validated = models.BooleanField(default=False, editable=False)
     mkdate = models.DateTimeField(auto_now_add=True)
 
+    def fee(self):
+        if self.plan == Verein.PLAN_REDUCED: return 21
+        if self.plan == Verein.PLAN_NORMAL: return 42
+        if self.plan == Verein.PLAN_SENIOR: return 84
+        if self.plan == Verein.PLAN_SILVER: return 420
+        if self.plan == Verein.PLAN_GOLD: return 1764
+        if self.plan == Verein.PLAN_INDIVIDUAL:
+            return self.extra_fee
 
 class VereinForm(ModelForm):
     class Meta:

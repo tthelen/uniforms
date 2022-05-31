@@ -10,7 +10,7 @@
     <div class="container-lg mt-5" style="max-width: 970px;">
         <div class="row m-5">
             <div class="col">
-                <img src="{% static 'cogscinet/logo.jpg' %}">
+                <a href="{% url 'cogscinetform' %}"><img src="{% static 'cogscinet/logo.jpg' %}"></a>
             </div>
         </div>
         <div class="row m-5">
@@ -20,17 +20,16 @@
                 {% endblock %}
                 <p>&nbsp;</p>
                 <hr>
-                <h2>Imprint</h2>
+                <h2 class="display-5">Imprint</h2>
                 <p>Verein der Freunde und Förderer des Instituts für Kognitionswissenschaft e.V. <br/>
                     c/o Kai-Uwe Kühnberger<br/>
                     Institut für Kognitionswissenschaft <br/>
                     Universität Osnabrück<br/>
-                    49069 Osnabrück</p>
-                <p>E-Mail: <a href="mailto:f2ikw@ikw.uos.de" class="link-dark">f2ikw@ikw.uos.de</a></p>
-                <p>Telefax: +49 541 969-16502</p>
-                <p>Telefon: +49 541 969-6502</p>
-                <p>Einzeln vertretungsberechtigte Vorstandsmitglieder: Prof. Dr. Kai-Uwe Kühnberger, Pascal Nieters, Dr. Tobias Thelen</p>
-            <p>Vereinregister: Amtsgericht Osnabrück VR
+                    49069 Osnabrück<br/>
+                    E-Mail: <a href="mailto:f2ikw@ikw.uos.de" class="link-dark">f2ikw@ikw.uos.de</a><br/>
+                    Telefax: +49 541 969-16502, Telefon: +49 541 969-6502<br/>
+                    Einzeln vertretungsberechtigte Vorstandsmitglieder: Prof. Dr. Kai-Uwe Kühnberger, Dr. Tobias Thelen, Pascal Nieters<br/>
+                    Vereinregister: Amtsgericht Osnabrück VR
                 </p>
             </div>
         </div>

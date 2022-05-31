@@ -1,20 +1,19 @@
 {%  extends 'cogscinet/base.html' %}
 {% load bootstrap5 %}
 {% block content %}
-    {{ status }}
     {% if status == 'error' %}
         <h1 class="display-3">Error!</h1>
         <p>&nbsp;</p>
-        <p>Fehler: Der verwendete Bestätigungslink ist ungültig. Bitte prüfen Sie, ob der Link vollständig übertragen wurde!</p>
+        <p>Error: The confirmation link you used is invalid. Please check if the link has been copied completely.</p>
     {% elif status == 'already validated' %}
-        <h1 class="display-3">Schon bestätigt</h1>
+        <h1 class="display-3">Already confirmed</h1>
         <p>&nbsp;</p>
-        <p>Hallo {{ anmeldung.firstname }} {{ anmeldung.lastname }}, Deine E-Mail-Adresse wurde bereits bestätigt. Du musst nichts weiter tun, wir melden uns mit weiteren Informationen.</p>
+        <p>Dear {{ anmeldung.firstname }} {{ anmeldung.lastname }} {% if anmeldung.company %}(for {{ anmeldung.company }}){% endif %}, your commitment was confirmed already. You don't have to take any further action, just wait for further information from us.</p>
     {% elif status == 'success' %}
-        <h1 class="display-3">Anmeldung erfolgreich bestätigt</h1>
+        <h1 class="display-3">Commitment confirmed</h1>
         <p>&nbsp;</p>
-        <p>Hallo {{ anmeldung.firstname }} {{ anmeldung.lastname }}, Deine Anmeldung und Deine E-Mail Adresse wurden erfolgreich bestätigt. Deine Anmeldung ist nun vollständig.</p>
+        <p>Dear {{ anmeldung.firstname }} {{ anmeldung.lastname }} {% if anmeldung.company %}(for {{ anmeldung.company }}){% endif %}, your commitment and your e-mail address have been confirmed. Thank you! You don't have to take any further action, just wait for further information from us.</p>
     {% else %}
-        <p>Unbekannter Fehler. Bitte antworte auf die Mail mit dem Bestätigungslink und teile uns mit, dass bei der Bestätigung ein Fehler aufgetreten ist.</p>
+        <p>Unknown error. Bitte antworte auf die Mail mit dem Bestätigungslink und teile uns mit, dass bei der Bestätigung ein Fehler aufgetreten ist.</p>
     {% endif %}
 {% endblock %}

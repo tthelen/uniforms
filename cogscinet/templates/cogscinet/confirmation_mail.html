@@ -4,13 +4,20 @@
 <p>This is the information we recevied from you:</p>
 
 <ul>
+    {% if anmeldung.company %}
+        <li>Company: {{anmeldung.company}}</li>
+    {% endif %}
     <li>Name: {{anmeldung.firstname}} {{anmeldung.lastname}}</li>
     <li>E-Mail-Adress: {{ anmeldung.email }}</li>
-    <li>Membership: {{ anmeldung.membership_display }}</li>
-    <li>Membership type you are willing to pay for (per year): {{ anmeldung.plan_display }}</li>
-    <li>Optional: Optional: Higher membership fee per year: {{ anmeldung.extra_fee }}</li>
-    <li>Your suggested name for the association:  {{ anmeldung.sugested_name }}</li>
-    <li>Further notes: {{ anmeldung.notes }}</li>
+    <li>Membership: {{ anmeldung.get_membership_display }}</li>
+    <li>Membership type (non-binding, has to be declared after final decision on fees): {{ anmeldung.get_plan_display }}</li>
+    {% if anmeldung.extra_fee %}
+        <li>Optional: Optional: Higher membership fee per year: {{ anmeldung.extra_fee }}</li>
+    {% endif %}
+    <li>Your suggested name for the association:  {{ anmeldung.suggested_name }}</li>
+    {% if anmeldung.notes %}
+        <li>Further notes: {{ anmeldung.notes }}</li>
+    {% endif %}
 </ul>
 
 <p><b>Please confirm your registration and your email-address by clicking on this link:</b>

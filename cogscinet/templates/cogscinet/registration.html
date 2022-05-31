@@ -1,12 +1,15 @@
  {%  extends 'cogscinet/base.html' %}
 {% load bootstrap5 %}
+{% load cogscinet_extras %}
 {% block content %}
     <h1 class="display-3">CogSci Network Membership</h1>
-    <h2>Keep the CogSci spirit alive!</h2>
+                <p>&nbsp;</p>
+<hr>
+    <h2 class="display-5">Keep the CogSci spirit alive!</h2>
     <p>In the summer of 2022, the old "Association of Friends of Sponsors of the Institute of Cognitive Science" (F²KW)
     is either to be closed down or to be transformed into an alumni network that is more closely tailored to the
     interests of current and former students.</p>
-    <p>These are some goals and means to reach them for the newly established CogSci network:</p>
+    <p>What can such an CogSci network do? These are some goals and plans we have:</p>
     <ul>
         <li>Create and support a reliable, long-term platform for exchange of ideas and networking among students, staff and alumni.</li>
         <li>Support events connecting students and alumni, such as the alumni conference.</li>
@@ -16,25 +19,31 @@
     </ul>
     <p>For this transformation to be possible, we need a "critical mass" of interested people who are willing to
     become (or stay) members and to suport the work of the association with their membership fee.</p>
-    <p><b>Our aim is to reach an annual revenue of at least 10,000 € from membership fees and donations to be able to pursuit these goals.</b>
-    <p><b>So far we have received commitments totaling {{ total }}.</b></p>
+    <p>Our aim is to reach an annual revenue of at least 10,000 € from membership fees and donations to be able to pursuit these goals.</p>
+    <p class="display-6 align-content-center">So far, there are commitments for {% total %}.</p>
 
-    <h2>Commit yourself now!</h2>
+                <p>&nbsp;</p>
+<hr>
+    <h2 class="display-5">Commit yourself now!</h2>
+    <p>The membership types and fees given below are suggestions and will be decided by the members' assembly. The current membership fee is 1€/year.</p>
     <p>After submitting, you will receive an e-mail asking you to confirm your submission.</p>
     {# Display django.contrib.messages as Bootstrap alerts #}
 
     {# Display a form #}
-    <form action="" method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      {% buttons %}
-        <button type="submit" class="btn btn-secondary">
-          Submit
-        </button>
-      {% endbuttons %}
-    </form>
-
-    <h2>Data Privacy</h2>
+    <div class="w-75 p-3" style="background-color: #eee;">
+        <form action="" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          {% buttons %}
+            <button type="submit" class="btn btn-secondary">
+              Submit
+            </button>
+          {% endbuttons %}
+        </form>
+    </div>
+<p>&nbsp;</p>
+    <hr>
+    <h2 class="display-5">Data Privacy</h2>
     <p>English summary:</p>
     <p>All data collected here is received and processed by board members of the F²IKW
     (Verein der Freunde und Förderer des Instituts für Kognitionswissenschaft e.V.) and their authorized agents only.
