@@ -27,7 +27,7 @@ class Verein(models.Model):
     plan = models.CharField(max_length=1, choices=[(PLAN_REDUCED, 'Reduced (21€)'), (PLAN_NORMAL, 'Regular (42€)'),
                                                    (PLAN_SENIOR, 'Senior (84€)'), (PLAN_SILVER, 'Company, silver member (420€)'),
                                                    (PLAN_GOLD, 'Company, gold member (42 * 42€ = 1.764€)'), (PLAN_INDIVIDUAL, 'Individual amount > 84€ for individuals, > 1764€ for companys, given below)')],
-                            verbose_name="Membership type (non-binding, has to be declared after final decision on fees)")
+                            verbose_name="Membership type and fee per year (non-binding, has to be declared after final decision on fees)")
     # iban = models.CharField(max_length=32, verbose_name='IBAN (only if you become a member now')  # will be checked via special form field
     extra_fee = models.IntegerField(verbose_name='Optional: Higher membership fee per year', blank=True, null=True)
     suggested_name = models.CharField(max_length=128, verbose_name='Suggested name for the association (examples suggested so far: "Coxi Club" or "CogSci Network"', blank=True)
