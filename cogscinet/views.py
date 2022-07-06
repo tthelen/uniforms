@@ -36,5 +36,5 @@ def validate(request, id):
 
 class VereinListView(ListView):
     model = Verein
-    paginate_by = 100  # if pagination is desired
+    # paginate_by = 100  # if pagination is desired
 
